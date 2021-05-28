@@ -1,0 +1,119 @@
+:host {
+  .container_ds {
+    // max-width: 242px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+
+    ::ng-deep mat-form-field {
+      padding: 0 10px;
+      // border: 1px solid #2F1515;
+      //   background-color: #F9F6F6;
+      border-radius: 8px;
+      height: 100%;
+      display: inline-flex;
+      align-items: center;
+
+      &.extended {
+        width: auto !important;
+        background-color: #f9f6f6;
+      }
+
+      .mat-form-field-wrapper {
+        //   display: none !important;
+        padding: 0;
+
+        .mat-form-field-flex {
+          align-items: center;
+          padding: 0;
+          border: none;
+          background-color: transparent;
+        }
+
+        .mat-form-field-underline {
+          display: none;
+        }
+      }
+
+      .mat-form-field-prefix {
+        .buttonCalendar {
+          width: 25px;
+
+          &.clickedOn {
+            background-color: red;
+          }
+
+          //   &:active {
+          //     background-color: red;
+          //   }
+        }
+      }
+
+      .mat-form-field-infix {
+        width: auto;
+        display: flex;
+        justify-content: center;
+        // padding-left: 10px;
+
+        .calendarText {
+          margin-left: 10px;
+        }
+
+        .mat-date-range-input {
+          display: none;
+
+          .mat-date-range-input-container {
+            .mat-date-range-input-start-wrapper {
+              width: 33%;
+              text-align: right;
+            }
+
+            .mat-date-range-input-separator {
+              width: 33%;
+              margin: 0;
+              text-align: center;
+            }
+
+            .mat-date-range-input-end-wrapper {
+              width: 33%;
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .test_class {
+  .mat-calendar-header {
+    padding: 0px;
+  }
+
+  .mat-calendar-table-header {
+    background-color: red;
+    display: none;
+  }
+  .mat-calendar-body-label {
+    visibility: hidden;
+    //   display: none;
+  }
+
+  .mat-calendar-content {
+    //   padding: 0;
+
+    .mat-datepicker-actions {
+    justify-content: space-evenly;
+
+    }
+  }
+
+  .mat-datepicker-actions {
+    justify-content: space-evenly;
+  }
+
+  :host-context(.mat-datepicker-actions) {
+    //   background: #ffcc00 !important;
+    background-color: red;
+  }
+}

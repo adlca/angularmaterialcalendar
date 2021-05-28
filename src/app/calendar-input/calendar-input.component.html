@@ -1,0 +1,81 @@
+<div class="container_ds">
+  <mat-form-field
+    appearance="fill"
+    floatLabel="never"
+    [ngClass]="this.matstart.value ? 'extended' : ''"
+  >
+    <!-- <mat-datepicker-toggle
+        matPrefix
+        class.active="buttonCalendar__active"
+        [for]="picker"
+      ></mat-datepicker-toggle> -->
+    <button
+      matPrefix
+      (click)="picker.open(); description(matend.value)"
+      class="buttonCalendar"
+      [ngClass]="calendarButtonActive ? 'clickedOn' : ''"
+    >
+      X
+    </button>
+
+    <span class="calendarText" *ngIf="matstart.value" matInfix>
+      {{ messageResult(matstart.value, matend.value) }}
+    </span>
+    <mat-date-range-input
+      [max]="this.maxCalendarDate"
+      [formGroup]="range"
+      [rangePicker]="picker"
+    >
+      <input
+        #matstart
+        readonly
+        (dateInput)="cambioFecha($event)"
+        matStartDate
+        formControlName="start"
+        (dateInput)="firstInputChange($event)"
+        [value]="dateStartValue"
+        (dateChange)="datechangeado()"
+      />
+      <input #matend readonly matEndDate formControlName="end" />
+    </mat-date-range-input>
+    <mat-date-range-picker
+      (closed)="onCalendarClose()"
+      (opened)="onCalendarOpen()"
+      (viewChanged)="calendarioVista($event)"
+      (monthSelected)="test()"
+      yPosition="below"
+      xPosition="start"
+      #picker
+      panelClass="test_class"
+    >
+      <mat-datepicker-actions>
+        <button
+          mat-button
+          matDatepickerCancel
+          class="wtg"
+          (click)="cancelButton()"
+        >
+          Cancelar
+        </button>
+        <button mat-raised-button color="primary" matDatepickerApply>
+          Confirmar
+        </button>
+      </mat-datepicker-actions>
+    </mat-date-range-picker>
+  </mat-form-field>
+  <button
+    matSuffix
+    *ngIf="matstart.value"
+    mat-icon-button
+    aria-label="Clear"
+    (click)="clearInputs()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<!-- <p>Selected range: {{ range.value | json }}</p>
+  
+  <button mat-raised-button (click)="picker.open(); description(matend.value)">
+    Open
+  </button> -->
